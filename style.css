@@ -1,0 +1,217 @@
+:root{
+    --bg:#0c0f13;
+    --card:#12161c;
+    --ink:#eaf0f6;
+    --ink-soft:#b8c2cf;
+    --accent:#53e0a9;
+    --accent-2:#2bd4ff;
+    --line:#233041;
+  }
+  
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color:var(--ink);
+    background: radial-gradient(1200px 600px at 80% -10%, rgba(43,212,255,.12), transparent 60%) , var(--bg);
+  }
+  
+  /* layout */
+  .wrap{width:min(1100px, 92%); margin-inline:auto}
+  
+  /* header */
+  .site-header{
+    position: sticky; top:0; z-index:20;
+    background: linear-gradient(180deg, rgba(12,15,19,.85), rgba(12,15,19,.55));
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,.04);
+  }
+  .site-header .wrap{display:flex; align-items:center; gap:20px; padding:12px 0}
+  .logo{font-size:1.1rem; letter-spacing:.5px; margin:0}
+  .logo span{color:var(--accent)}
+  
+  /* デスクトップナビゲーション */
+  .nav-desktop a{color:var(--ink-soft); text-decoration:none; margin-left:16px; font-size:.95rem}
+  .nav-desktop a:hover{color:var(--ink)}
+  
+  /* ハンバーガーメニューボタン */
+  .hamburger-menu{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+  }
+  
+  .hamburger-line{
+    width: 100%;
+    height: 3px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  /* ハンバーガーメニューが開いている時の線のアニメーション */
+  .hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(1){
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  
+  .hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(2){
+    opacity: 0;
+  }
+  
+  .hamburger-menu[aria-expanded="true"] .hamburger-line:nth-child(3){
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  
+  /* モバイルナビゲーション */
+  .nav-mobile{
+    display: none;
+    background: var(--card);
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding: 20px 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-mobile.active{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .nav-mobile a{
+    display: block;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-mobile a:hover{
+    color: var(--ink);
+    background: rgba(255,255,255,.02);
+  }
+  
+  /* hero */
+  .hero{padding:72px 0 36px; border-bottom:1px solid rgba(255,255,255,.05)}
+  .hero__inner{display:grid; grid-template-columns:1.2fr 1fr; align-items:center; gap:24px}
+  .hero__copy h2{font-size: clamp(28px, 4vw, 44px); margin:.2em 0 .3em}
+  .hero__copy p{color:var(--ink-soft); margin: 0 0 16px}
+  .btn{
+    display:inline-block; padding:12px 18px; border-radius:999px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    color:#001018; text-decoration:none; font-weight:700
+  }
+  .hero__viz{
+    aspect-ratio: 3 / 2; background: linear-gradient(180deg, #0e131b, #0b1118);
+    border:1px solid rgba(255,255,255,.06); border-radius:18px;
+    display:grid; place-items:center; overflow:hidden;
+  }
+  .pulse-line{
+    fill:none; stroke:url(#grad);
+    stroke: url(#grad, #53e0a9);
+    stroke:#53e0a9; stroke-width:4; filter: drop-shadow(0 0 10px rgba(83,224,169,.25));
+    stroke-linecap:round; stroke-linejoin:round;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform: translateX(0) scaleY(1)}
+    50%{transform: translateX(-6px) scaleY(1.06)}
+  }
+  
+  /* journey */
+  .journey{padding:56px 0}
+  .journey h2{font-size: clamp(22px, 3.2vw, 32px); margin:0 0 6px}
+  .journey__lead{color:var(--ink-soft); margin:0 0 24px}
+  
+  .steps{display:grid; gap:18px; padding:0; list-style:none; counter-reset: c}
+  .step{
+    display:grid; grid-template-columns: 160px 1fr; gap:16px;
+    background:var(--card); border:1px solid rgba(255,255,255,.06);
+    border-radius:16px; padding:14px;
+    transform: translateY(14px); opacity: .0;
+    transition: transform .6s cubic-bezier(.2,.7,.2,1), opacity .6s ease;
+  }
+  .step.in-view{ transform: translateY(0); opacity: 1 }
+  .step__art{
+    background: linear-gradient(180deg, #0e141b, #0a1016);
+    border:1px solid rgba(255,255,255,.06); border-radius:12px; display:grid; place-items:center;
+  }
+  .step__body h3{margin:.2em 0 .2em; font-size:1.05rem}
+  .step__body p{margin:.2em 0 0; color:var(--ink-soft); font-size:.95rem}
+  
+  /* SVG styling + “in-view”アニメ */
+  .svg{width:120px; height:90px}
+  
+  /* step1 */
+  .glove{fill:#ff5a79}
+  .wrist{fill:#ffd1da}
+  .spark{stroke:#ffd166; stroke-width:3; fill:none; stroke-linecap:round; opacity:.0}
+  .step[data-step="1"].in-view .spark{animation: spark .9s ease .2s forwards}
+  @keyframes spark{to{opacity:1; transform: translateY(-2px)}}
+  
+  /* step2 */
+  .mitt{fill:#4fd2ff}
+  .fist{fill:#e8f7ff}
+  .motion{stroke:#9be8ff; stroke-width:4; stroke-linecap:round; opacity:0}
+  .step[data-step="2"].in-view .mitt{animation: bump 900ms ease-in-out 0s 1}
+  .step[data-step="2"].in-view .fist{animation: bump 900ms ease-in-out .08s 1 reverse}
+  .step[data-step="2"].in-view .motion{animation: flash .9s ease .2s 1 forwards}
+  @keyframes bump{50%{transform: translateX(-8px)}}
+  @keyframes flash{0%{opacity:0} 25%{opacity:.9} 100%{opacity:0}}
+  
+  /* step3 */
+  .head{fill:#d6e4ff}
+  .body{fill:#9db8ff}
+  .arm{fill:#b9ccff}
+  .step[data-step="3"].in-view .arm--l{animation: sway 1400ms ease-in-out 0s 1}
+  .step[data-step="3"].in-view .arm--r{animation: sway 1400ms ease-in-out .1s 1 reverse}
+  @keyframes sway{50%{transform: translateX(6px)}}
+  
+  /* step4 */
+  .stretch{fill:none; stroke:#84f7c9; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:220; stroke-dashoffset:220}
+  .step[data-step="4"].in-view .stretch{animation: draw 1200ms ease forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  
+  /* progress */
+  .progress{
+    position: sticky; bottom:16px; height:6px; margin-top:24px;
+    background:#0a1117; border:1px solid rgba(255,255,255,.06);
+    border-radius:999px; overflow:hidden;
+  }
+  .progress__bar{height:100%; width:0%; background: linear-gradient(90deg, var(--accent), var(--accent-2))}
+  
+  /* CTA */
+  .cta{padding:56px 0; background: linear-gradient(180deg, #0b1118, #0a0f15)}
+  .cta h2{margin:.2em 0 .4em; font-size: clamp(22px,3.2vw,30px)}
+  .cta p{color:var(--ink-soft); margin:0 0 18px}
+  
+  /* footer */
+  .site-footer{border-top:1px solid rgba(255,255,255,.06); padding:16px 0; color:var(--ink-soft)}
+  
+  /* responsive */
+  @media (max-width: 860px){
+    .hero__inner{grid-template-columns:1fr}
+    .step{grid-template-columns:1fr; gap:10px}
+    
+    /* モバイル時はデスクトップナビを非表示、ハンバーガーメニューを表示 */
+    .nav-desktop{display: none}
+    .hamburger-menu{display: flex}
+    
+    /* モバイルナビゲーションを表示 */
+    .nav-mobile{display: block}
+  }
+  
+  /* アクセシビリティ：reduce motion */
+  @media (prefers-reduced-motion: reduce){
+    *{animation: none !important; transition: none !important}
+  }
+  

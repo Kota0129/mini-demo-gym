@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gym Journey Demo | Kota_WebOffice</title>
+  <meta name="description" content="スクロールに合わせてトレーニングの流れが見えるミニデモ" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="logo">TriGym<span>Demo</span></h1>
+      <nav class="nav-desktop" aria-label="main">
+        <a href="#journey">Journey</a>
+        <a href="#cta">Join</a>
+      </nav>
+      <button class="hamburger-menu" aria-label="メニューを開く" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" aria-label="main">
+      <a href="#journey">Journey</a>
+      <a href="#cta">Join</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner wrap">
+        <div class="hero__copy">
+          <h2 id="hero-title">動きで伝わる。<br>ジムの熱量。</h2>
+          <p>スクロールに合わせて“体験の流れ”が見える、軽量アニメのミニデモです。</p>
+          <a class="btn" href="#journey">デモを見る</a>
+        </div>
+        <div class="hero__viz" aria-hidden="true">
+          <!-- シンプルなSVGをCSSでゆるくアニメ -->
+          <svg viewBox="0 0 300 200" role="img" aria-label="脈動するライン">
+            <path class="pulse-line" d="M0,120 C50,60 80,160 120,100 C160,40 200,160 260,80 300,40 320,140 360,100" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="journey wrap" aria-labelledby="journey-title">
+      <h2 id="journey-title">Training Journey</h2>
+      <p class="journey__lead">ユーザーがスクロールすると各シーンが“ふわっ”と現れ、簡単なアニメが走ります。</p>
+
+      <ol class="steps" role="list">
+        <!-- STEP 1 -->
+        <li class="step" data-step="1">
+          <div class="step__art">
+            <!-- グローブ装着（丸→はめる動き） -->
+            <svg viewBox="0 0 160 120" class="svg" aria-hidden="true">
+              <circle class="glove" cx="50" cy="60" r="26" />
+              <rect class="wrist" x="70" y="52" width="36" height="16" rx="8" />
+              <path class="spark" d="M120,20 l6,-6 M124,26 l8,-3 M118,32 l6,6" />
+            </svg>
+          </div>
+          <div class="step__body">
+            <h3>1. グローブ装着</h3>
+            <p>最初の一歩を軽快に。入会直後の“始めやすさ”を印象づけます。</p>
+          </div>
+        </li>
+
+        <!-- STEP 2 -->
+        <li class="step" data-step="2">
+          <div class="step__art">
+            <!-- ミット打ち（円が前後に弾む） -->
+            <svg viewBox="0 0 160 120" class="svg" aria-hidden="true">
+              <circle class="mitt" cx="110" cy="60" r="22" />
+              <circle class="fist" cx="50" cy="60" r="16" />
+              <line class="motion" x1="70" y1="60" x2="100" y2="60" />
+            </svg>
+          </div>
+          <div class="step__body">
+            <h3>2. ミット打ち</h3>
+            <p>テンポ良く“打つ→戻る”。スピード感を軽いモーションで表現。</p>
+          </div>
+        </li>
+
+        <!-- STEP 3 -->
+        <li class="step" data-step="3">
+          <div class="step__art">
+            <!-- シャドー（ヒト型の影が左右に揺れる） -->
+            <svg viewBox="0 0 160 120" class="svg" aria-hidden="true">
+              <circle class="head" cx="80" cy="36" r="12" />
+              <rect class="body" x="72" y="48" width="16" height="32" rx="6" />
+              <rect class="arm arm--l" x="52" y="50" width="20" height="8" rx="4" />
+              <rect class="arm arm--r" x="88" y="50" width="20" height="8" rx="4" />
+            </svg>
+          </div>
+          <div class="step__body">
+            <h3>3. シャドーボクシング</h3>
+            <p>しなやかな動き＝フォーム改善・継続性を暗示。</p>
+          </div>
+        </li>
+
+        <!-- STEP 4 -->
+        <li class="step" data-step="4">
+          <div class="step__art">
+            <!-- ストレッチ（ラインが伸縮） -->
+            <svg viewBox="0 0 160 120" class="svg" aria-hidden="true">
+              <path class="stretch" d="M20,90 C60,60 100,120 140,90" />
+            </svg>
+          </div>
+          <div class="step__body">
+            <h3>4. ストレッチ</h3>
+            <p>最後はクールダウン。やさしい伸縮で“ケア”を表現します。</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="progress" aria-hidden="true">
+        <div class="progress__bar" id="progressBar"></div>
+      </div>
+    </section>
+
+    <section id="cta" class="cta" aria-labelledby="cta-title">
+      <div class="wrap">
+        <h2 id="cta-title">この演出をあなたのサイトにも。</h2>
+        <p>軽量で実装・保守が簡単。Tri.H Studioの世界観に合わせてトーン調整します。</p>
+        <a class="btn" href="https://kotaweboffice.com/" target="_blank" rel="noopener">お問い合わせ</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <small>© Kota_WebOffice</small>
+    </div>
+  </footer>
+</body>
+</html>
